@@ -1,28 +1,36 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export function useCounter() {
-
-    const [count, setCount] = useState(0)
-      const dicreaseCount = () => {
-        if (count > 0) {
-          setCount((count) => count - 1)
-        }
-      }
-    const handleIncrement = () => {
-      const newCount = count + 1
-      setCount(newCount)
-      
-        // Mostrar alerta cuando el contador llegue a 24
-        if (newCount === 24) {
-            setShowAlert(true)
-        }
-    }
-
-    const closeAlert = () => {
-        setShowAlert(false)
-    }
-
-    return { count, handleIncrement, dicreaseCount }
-  }
-
+  // Load count from localStorage on initial render
+  const [count, setCount] = useState(() => {
+    const savedCount = localStorage.getItem('counterValue')
+    return savedCount ? parseInt(savedCount) : 0
+  })
   
+  // The favorite number value
+  const favoriteNumber = 24
+  
+  // Check if count equals favorite number
+  const isFavoriteNumber = count === favoriteNumber
+  
+  // Save count to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('counterValue', count.toString())
+  }, [count])
+  
+  const handleIncrement = () => {
+    const newCount = count + 1
+    setCount(newCount)
+  }
+  
+  const decreaseCount = () => {
+    if (count > 0) {
+      setCount((count) => count - 1)
+    }
+  }
+  
+  // New function to show alert when favorite number is reached
+  const showAlert = isFavoriteNumber
+  
+  return { count, handleIncrement, decreaseCount, isFavoriteNumber, showAlert }
+}
