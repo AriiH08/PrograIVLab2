@@ -62,7 +62,7 @@ export function Counter() {
 
       {isFavoriteNumber_Ari && (
         <p style={{color: '#0000FF', fontWeight: 'bold'}}>
-          ¡Este es mi numero favorito by Ari!
+          ¡Este es mi numero favorito by Ari !
         </p>
       )}
       
