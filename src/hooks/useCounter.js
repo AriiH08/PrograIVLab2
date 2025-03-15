@@ -9,10 +9,11 @@ export function useCounter() {
   
   // The favorite number value
   const favoriteNumber = 24
+  const favoriteNumber_Ari = 50
   
   // Check if count equals favorite number
   const isFavoriteNumber = count === favoriteNumber
-  
+  const isFavoriteNumber_Ari = count === favoriteNumber_Ari
   // Save count to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('counterValue', count.toString())
@@ -31,6 +32,7 @@ export function useCounter() {
   
   // New function to show alert when favorite number is reached
   const showAlert = isFavoriteNumber
+ 
   
-  return { count, handleIncrement, decreaseCount, isFavoriteNumber, showAlert }
+  return { count, handleIncrement, decreaseCount, isFavoriteNumber, isFavoriteNumber_Ari, showAlert }
 }

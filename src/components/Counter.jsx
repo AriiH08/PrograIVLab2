@@ -2,7 +2,7 @@ import { useCounter } from '../hooks/useCounter'
 import { useEffect } from 'react'
 
 export function Counter() {
-  const { count, handleIncrement, decreaseCount, isFavoriteNumber, showAlert } = useCounter()
+  const { count, handleIncrement, decreaseCount, isFavoriteNumber, isFavoriteNumber_Ari, showAlert } = useCounter()
   
   // Show alert when favorite number is reached
   useEffect(() => {
@@ -56,7 +56,13 @@ export function Counter() {
       
       {isFavoriteNumber && (
         <p style={{color: '#0000FF', fontWeight: 'bold'}}>
-          ¡Esta es la fecha de mi cumpleaños!
+          ¡Esta es la fecha de mi cumpleaños by Criss!
+        </p>
+      )}
+
+      {isFavoriteNumber_Ari && (
+        <p style={{color: '#0000FF', fontWeight: 'bold'}}>
+          ¡Este es mi numero favorito by Ari!
         </p>
       )}
       
